@@ -9,7 +9,7 @@
 #Print the details clearly like this:
 
 
-#Name: John  
+#Name: John 
 #Age: 20  
 #Height: 5.8  
 #Is Student: True  
