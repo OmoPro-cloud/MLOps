@@ -14,6 +14,7 @@
 #Height: 5.8  
 #Is Student: True  
 
+print('Hello World!')
 print("Personal Profile Program")
 print("Please input all relevant data")
 name = input("Please enter your full name: ")
