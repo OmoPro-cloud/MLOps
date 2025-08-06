@@ -1,22 +1,27 @@
-def add(x, y):
-  if not isinstance(x, (int, float) and y, (int, float)):
-    raise TypeError(f'the "add" function only accepts numerical charcters!')
-  return x + y
+#add functions for add, subtract, divide, multiply
 
-def subtract(x, y):
-  if not isinstance(x, (int, float) and y, (int, float)):
-    raise TypeError(f'The "subtract" function only accepts numerical characters!')
-  return x - y
+def add(a, b):
+  if not isinstance(a, (int, float) and b, (int, float)):
+    raise TypeError('the addition function requires numeric types')
+  return a + b
 
-def multiply(x, y):
-  if not isinstance(x, (int, float) and y, (int, float)):
-    raise TypeError(f'The "multiply" function only accepts numerical characters!')
-  return x * y
+def subtract(a, b):
+  if not isinstance(a, (int, float) and b, (int, float)):
+    raise TypeError('the subtract function requires numeric types')
+  return a - b
 
-def divide(x, y):
-  if not isinstance(x, (int, float) and y, (int, float)):
-    raise TypeError(f'The "divide" function can only accept numerical characters!')
-  return x / y
+def divide(a, b):
+  if not isinstance(a, (int, float) and b, (int, float)):
+    raise TypeError('the divide function requires numeric types')
+  return a / b
+
+def multiply(a, b):
+  if not isinstance(a, (int, float) and b, (int, float)):
+    raise TypeError('the multiplication function requires numeric types')
+  return a * b
+
+
+#calculator(main) interaction
 
 def main():
   print('The Calculator App welcomes you. Type "bye" to exit')
