@@ -2,37 +2,39 @@
 
 def add(a, b):
   if not isinstance(a, (int, float) and b, (int, float)):
-    raise TypeError('the addition function requires numeric types')
+    raise TypeError('the addition function requires a numerical input')
   return a + b
 
 def subtract(a, b):
   if not isinstance(a, (int, float) and b, (int, float)):
-    raise TypeError('the subtract function requires numeric types')
+    raise TypeError('the substraction function requires a numerical input')
   return a - b
+
+def multiply(a, b):
+  if not isinstance(a, (int, float) and b(int, float)):
+    raise TypeError('the multiplication function requires a numerical input')
+  return a * b
 
 def divide(a, b):
   if not isinstance(a, (int, float) and b, (int, float)):
-    raise TypeError('the divide function requires numeric types')
+    raise TypeError('the multiplication function requires a numerical input')
   return a / b
-
-def multiply(a, b):
-  if not isinstance(a, (int, float) and b, (int, float)):
-    raise TypeError('the multiplication function requires numeric types')
-  return a * b
-
 
 #calculator(main) interaction
 
 def main():
-  print('The Calculator App welcomes you. Type "bye" to exit')
+  print('The Calculator App welcomes you')
+  print('type "bye" to exit')
 
   while True:
-    start = input('Select whether you want to add, subtract, divide or multiply')
-
-    if start == "bye":
-      print('Farewell.')
+    op = input('type "add", "subtract", "multiply", or "divide"').strip().lower()
+    if op == "bye":
+      print('Farewell')
       break
 
-    if start not in {"add", "subtract", "divide", "multiply"}:
-      print('Unrecognized command - please type add, subtract, multiply or divide')
+    if op not in {"add", "subtract", "multiply", "divide"}:
+      print('unrecognized input - type add, subtract, divide, multiply')
       continue
+
+
+main()
