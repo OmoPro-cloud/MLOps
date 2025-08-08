@@ -1,35 +1,52 @@
-#create a new file
-#build a simple calculator that can do add, sub, mult
+def add(a, b):
+  if not (isinstance(a, (int, float)) and (isinstance(b, (int, float)))):
+    raise TypeError('Error - function requires a numerical input')
+  return a + b
 
-def add(x, y):
-  if not (isinstance(x, (int, float)) and isinstance(y, (int, float))):
-    raise TypeError('This function can only accept numerical values')
-  return x + y
+def subtract(a, b):
+  if not (isinstance(a, (int, float)) and (isinstance(b, (int, float)))):
+    raise TypeError('Error - function requires a numerical input')
+  return a - b
 
-def subtract(x, y):
-  if not (isinstance(x, (int, float)) and isinstance(y, (int, float))):
-    raise TypeError('This function can only accept numerical values')
-  return x - y
+def multiply(a, b):
+  if not (isinstance(a, (int, float)) and (isinstance(b, (int, float)))):
+    raise TypeError('Error - function requires a numerical input')
+  return a * b
 
-def multiply(x, y):
-  if not (isinstance(x, (int, float)) and (isinstance(y, (int, float)))):
-    raise TypeError('This function can only accept numerical values')
-  return x * y
+def divide(a, b):
+  if not (isinstance(a, (int, float)) and (isinstance(b, (int, float)))):
+    raise TypeError('Error - function requires a numerical input')
+  return a / b
 
-print('Welcome to the calculator app')
+while True:
+  print('Welcome')
+  op = input('Please select a function: add, subtract, multiply, or divide. Type "bye" to exit the application: ').strip().lower()
+  print(op)
 
-op = input('Please choose whether you would like to add, subtract or multiply')
-if op == 'add':
-  x = int(input('Please enter your first number: '))
-  y = int(input('Please enter your second number: '))
-  print(add(x, y))
+  if op == 'bye': 
+    print('Farewell')
+    break
 
-if op == 'subtract':
-  x = int(input('Please add your first number: '))
-  y = int(input('Please enter your second number: '))
-  print(subtract(x, y))
+  if op not in {'add', 'subtract', 'divide', 'multiply'}:
+    print('Unrecognized request. Enter a valid function.')
+    continue
 
-if op == 'multiply':
-  x = int(input('Please enter your first number: '))
-  y = int(input('Please enter your second number: '))
-  print(multiply(x, y))
+  try:
+    a = int(input('Enter your first number: '))
+    b = int(input('Enter your second number: '))
+  except ValueError:
+    print('Error - invalid input')
+    continue
+    
+  print(a, b)
+  
+  if op == 'add':
+    result = add(a, b)
+  elif op == 'subtract':
+    result = subtract(a, b)
+  elif op == 'multiply':
+    result = multiply(a, b)
+  elif op == 'divide':
+    result =  divide(a, b)
+  
+  print('Result: ', result)
