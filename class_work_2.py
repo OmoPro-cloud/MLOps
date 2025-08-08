@@ -1,52 +1,56 @@
-def add(a, b):
-  if not (isinstance(a, (int, float)) and (isinstance(b, (int, float)))):
+def add(x, y):
+  if not (isinstance(x, (int, float)) and (isinstance(y, (int, float)))):
     raise TypeError('Error - function requires a numerical input')
-  return a + b
+  return x + y
 
-def subtract(a, b):
-  if not (isinstance(a, (int, float)) and (isinstance(b, (int, float)))):
+def subtract(x, y):
+  if not (isinstance(x, (int, float)) and (isinstance(y, (int, float)))):
     raise TypeError('Error - function requires a numerical input')
-  return a - b
+  return x - y
 
-def multiply(a, b):
-  if not (isinstance(a, (int, float)) and (isinstance(b, (int, float)))):
+def multiply(x, y):
+  if not (isinstance(x, (int, float)) and (isinstance(y, (int, float)))):
     raise TypeError('Error - function requires a numerical input')
-  return a * b
+  return x * y
 
-def divide(a, b):
-  if not (isinstance(a, (int, float)) and (isinstance(b, (int, float)))):
+def divide(x, y):
+  if not (isinstance(x, (int, float)) and (isinstance(y, (int, float)))):
     raise TypeError('Error - function requires a numerical input')
-  return a / b
+  return x / y
+
+print('Welcome')
 
 while True:
-  print('Welcome')
-  op = input('Please select a function: add, subtract, multiply, or divide. Type "bye" to exit the application: ').strip().lower()
-  print(op)
+  op = input('Please select a function: add, subtract, multiply or divide. Press "bye" to exit')
 
-  if op == 'bye': 
+  if op == 'bye':
     print('Farewell')
     break
 
-  if op not in {'add', 'subtract', 'divide', 'multiply'}:
-    print('Unrecognized request. Enter a valid function.')
+  if op not in {'add', 'subtract', 'multiply', 'divide'}:
+    print('Unknown command - type add, subtract, or multiply.')
     continue
 
   try:
-    a = int(input('Enter your first number: '))
-    b = int(input('Enter your second number: '))
+    x = int(input('Please enter your first number: '))
+    y = int(input('Please enter your second number: '))
+
   except ValueError:
-    print('Error - invalid input')
+    print('Please enter numerical data for the function!')
     continue
+
+  try:
+    if op == 'add':
+      result = add(x, y)
+    elif op == 'subtract':
+      result = subtract(x, y)
+    elif op == 'multiply':
+      result = multiply(x, y)
+    elif op == 'divide':
+      result = divide(x, y)
     
-  print(a, b)
-  
-  if op == 'add':
-    result = add(a, b)
-  elif op == 'subtract':
-    result = subtract(a, b)
-  elif op == 'multiply':
-    result = multiply(a, b)
-  elif op == 'divide':
-    result =  divide(a, b)
-  
-  print('Result: ', result)
+  except ValueError as err:
+    print('Error - ', err)
+    continue
+
+  print('Result = ', result)
