@@ -34,4 +34,4 @@ if op == 'multiply':
   y = int(input('Please enter your second number: '))
   print(multiply(x, y))
 
-print()
+print(1)
