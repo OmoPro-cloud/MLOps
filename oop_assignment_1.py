@@ -1,44 +1,4 @@
-#Assignment – Extended Dog Class
-#Modify the Dog class to include the following:
-
-#An additional attribute called breed. X
-
-#A method called celebrate_birthday() that increases the dog's age by 1 and returns a message like:
-#"Buddy is now 6 years old. Happy Birthday!" X
-
-#Update the walk() method so it returns a message like:
-#"Buddy is walking happily in the park." X
-
-#Add a method rename(new_name) to change the dog's name.
-
-#Create at least 3 dog objects with different names, ages, and breeds.
-#Demonstrate usage of all methods in your program:
-
-#Make each dog bark.
-
-#Print their age and breed.
-
-#Make one dog celebrate its birthday.
-
-#Rename one dog.
-
-#Make all dogs walk.
-
-#Bonus Task (Optional):
-#Create a method compare_age(other_dog) that compares two dogs' ages and returns a message stating which dog is older.
-
-
-#Expected Skills Practiced:
-
-#__init__ constructor
-
-#Instance variables
-
-#Writing multiple methods
-
-#Passing objects as parameters (bonus)
-
-class Dog:
+class Dog():
   def __init__(self, name, age, breed):
     self.name = name
     self.age = age
@@ -48,13 +8,13 @@ class Dog:
     return f'{self.name} says Woof!'
   
   def get_age(self):
-    return f'{self.name} is {self.age} years old.'
-  
-  def get_breed(self):
-    return f'{self.name} is a {self.breed}!'
+    return f'{self.name} is {self.age} years old'
   
   def walk(self):
-    return f'{self.age} is walking happily in the park.'
+    return f'{self.name} is happily walking.'
+  
+  def get_breed(self):
+    return f'{self.name} is a {self.breed}.'
   
   def celebrate_birthday(self):
     self.age += 1
@@ -62,13 +22,46 @@ class Dog:
   
   def rename(self, new_name):
     self.name = new_name
-    return f'The dog has changed their name to {new_name}.'
+    return f'The dog has changed their name to {self.name}'
   
+  def compare_age(self, other_dog):
+    if self.age > other_dog.age:
+      return f'{self.name} is older than {other_dog.age}'
+    elif self.age < other_dog.age:
+      return f'{other_dog} is older than {self.name}'
+    else:
+      return f'{self.name} and {other_dog} are the same age.'
   
 my_dog = Dog('Jett', 5, 'German Shepherd')
 print(my_dog.bark())
 print(my_dog.get_age())
+print(my_dog.walk())
 print(my_dog.get_breed())
 print(my_dog.celebrate_birthday())
-print(my_dog.walk())
 print(my_dog.rename('Jill'))
+
+dog1 = Dog('Buddy', 3, 'Golden Retriever')
+dog2 = Dog('Luna', 5, 'Beagle')
+dog3 = Dog('Max', 2, 'Pitbull')
+
+print(dog1.bark())
+print(dog2.bark())
+print(dog3.bark())
+
+print(dog1.get_age())
+print(dog2.get_age())
+print(dog3.get_age())
+
+print(dog1.get_breed())
+print(dog2.get_breed())
+print(dog3.get_breed())
+
+print(dog1.celebrate_birthday())
+
+print(dog1.rename('Luther'))
+
+print(dog1.walk())
+print(dog2.walk())
+print(dog3.walk())
+
+print(dog1.compare_age(my_dog))
