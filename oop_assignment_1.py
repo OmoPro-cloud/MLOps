@@ -28,9 +28,9 @@ class Dog():
     if self.age > other_dog.age:
       return f'{self.name} is older than {other_dog.age}'
     elif self.age < other_dog.age:
-      return f'{other_dog} is older than {self.name}'
+      return f'{other_dog.name} is older than {self.name}'
     else:
-      return f'{self.name} and {other_dog} are the same age.'
+      return f'{self.name} and {other_dog.name} are the same age.'
   
 my_dog = Dog('Jett', 5, 'German Shepherd')
 print(my_dog.bark())
