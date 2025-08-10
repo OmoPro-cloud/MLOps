@@ -39,29 +39,41 @@
 #Method overriding
 
 class bankAccount():
-  def __init__(self, account_number, account_holder, balance):
-    self.__account_number = account_number
+  def __init__(self, account_holder, account_number, account_balance):
     self.__account_holder = account_holder
-    self.__balance = balance
+    self.__account_number = account_number
+    self.__account_balance = account_balance
 
   def get_details(self):
-    return f'{self.__account_holder} currently has active account: "{self.__account_number}" on file with us. {self.__account_holder} has a remaining balance of ${self.__balance}.'
+    return f'welcome {self.__account_holder}! You currently hold account number #{self.__account_number}, with an account balance of: ${self.__account_balance}.'
   
   def withdraw(self, amount):
     if amount <= 0:
-      print('Sorry, your withdrawal amount must be greater than 0!')
-    self.__balance -= amount
-    return f'Congratulations, {self.__account_holder}! You have succesfully made a withdrawal amount of: ${amount}. Your current balance is now: {self.__balance}.'
+      print('sorry, {self.account__holder} your withdrawal amount has to be greater than 0!')
+    self.__account_balance -= amount
+    return f'{self.__account_holder} your withdrawal amount of {amount} has been succesfully processed, leaving you with a resulting balance of: ${self.__account_balance}.'
   
   def deposit(self, amount):
     if amount <= 0:
-      print('Sorry, your selected deposit amount has to be greater than $0!')
-    self.__balance += amount
-    return f'Congratulations, {self.__account_holder}! Your deposit amount of ${amount} has been processed, and your account has dually been updated to reflect its new balance of {self.__balance}!'
+      print('sorry {self.__account_holder}, your deposit amount has to be greater than 0!')
+    self.__account_balance += amount
+    return f'congratulations {self.__account_holder}, your deposit of {amount} has succesfully been processed, leaving you with a resulting balance of: ${self.__account_balance}'
+  
 
+class savingsAccount(bankAccount):
+  def __init__(self, interest_rate, add_interest):
+    self.__interest_rate = interest_rate
+    self.__add_interest = add_interest
 
-myAccount = bankAccount(619, 'Jay', 7000000)
+  def savings_details(self):
+    return f'thanks you for opening a new savings account with us, {self.__account_holder}. since your account is new, you will be given an interest rate of {self.__interest_rate}.'
+
+myAccount = bankAccount('Jay', 619, 7000000)
 
 print(myAccount.get_details())
-print(myAccount.withdraw(30000))
-print(myAccount.deposit(150000))
+print(myAccount.withdraw(15000))
+print(myAccount.deposit(325000))
+
+mySavingsAccount = bankAccount('Jay', 619, 7000000(savingsAccount(1.50, 0)))
+
+print(mySavingsAccount.savings_details())
