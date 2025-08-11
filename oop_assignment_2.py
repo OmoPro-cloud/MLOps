@@ -38,51 +38,93 @@
 
 #Method overriding
 
-class bankAccount():
-  def __init__(self, account_holder, account_number, account_balance):
-    self.__account_holder = account_holder
-    self.__account_number = account_number
-    self.__account_balance = account_balance
 
-    def get_balance():
-      return f'Current balance = ${self.__account_balance}.'
-    
+# 1. BankAccount
+class BankAccount:
+    def __init__(self, account_number, holder_name, balance=0):
+        self.__account_number = account_number
+        self.__holder_name = holder_name
+        self.__balance = balance
 
-  def get_details(self):
-    return f'welcome, {self.__account_holder}. you currently hold account number #{self.__account_number}, with an available balance of ${self.__account_balance}'
-  
-  def deposit(self, amount):
-    if amount <= 0:
-      print('sorry {self.__acount_holder}, your deposit amount has to be greater than $0!')
-    self.__account_balance += amount
-    return f'congratulations {self.__account_holder}, your deposit of ${amount} has been succesfully processed, leaving you with an available balance of: ${self.__account_balance}'
-  
+    def get_account_number(self):
+        return self.__account_number
 
-  def withdraw(self, amount):
-    if amount <= 0:
-      print('sorry {self.__account_holder}, your withdrawal amount has to be greater than $0!')
-    self.__account_balance -= amount
-    return f'congratulations {self.__account_holder}, your withdrawal of ${amount} has been succesfully processed, leaving you with a remaining balance of: ${self.__account_balance}'
+    def get_holder_name(self):
+        return self.__holder_name
 
-class savingsAccount(bankAccount):
-  def __init__(self, account_number, account_holder, account_balance, interest_rate):
-    bankAccount.__init__(self, account_number, account_holder, account_balance)
-    self.__interest_rate = interest_rate
+    def get_balance(self):
+        return self.__balance
 
-  def apply_interest(self):
-    interest = self.__account_balance() * (self.__interest_rate / 100)
-    response = self.deposit(interest)
-    return (f'Interest of ${interest:.2f} added at {self.__interest_rate}%.' + (response))
+    def deposit(self, amount):
+        if amount > 0:
+            self.__balance += amount
+            print(f'Deposited: {amount}')
+        else:
+            print('Deposit amount must be positive.')
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            print('Withdrawal amount must be positive.')
+        elif amount > self.__balance:
+            print('Insufficient funds.')
+        else:
+            self.__balance -= amount
+            print(f'Withdrew: {amount}')
+
+    def print_account_details(self):
+        print(f'Account Number: {self.get_account_number()}')
+        print(f'Account Holder: {self.get_holder_name()}')
+        print(f'Balance: {self.get_balance()}')
+        print('-' * 30)
 
 
+# 2. SavingsAccount class
+class SavingsAccount(BankAccount):
+    def __init__(self, account_number, holder_name, balance, interest_rate):
+        super().__init__(account_number, holder_name, balance)
+        self.interest_rate = interest_rate
 
-myAccount = bankAccount('Jay', 619, 7000000)
-print(myAccount.get_details())
-print(myAccount.deposit(500000))
-print(myAccount.withdraw(25000))
+    def apply_interest(self):
+        interest = self.get_balance() * (self.interest_rate / 100)
+        self.deposit(interest)
+        print(f'Interest of {interest} applied at rate {self.interest_rate}%.')
 
-s = savingsAccount(123, 'Jay', 1000, 5)
 
-print(s.get_details())
-print(s.apply_interest())
-print(s.get_details())
+# 3. CurrentAccount class
+class CurrentAccount(BankAccount):
+    def __init__(self, account_number, holder_name, balance, overdraft_limit):
+        super().__init__(account_number, holder_name, balance)
+        self.overdraft_limit = overdraft_limit
+
+    def withdraw(self, amount):
+        if amount <= 0:
+            print('Withdrawal amount must be positive.')
+        elif amount > self.get_balance() + self.overdraft_limit:
+            print('Overdraft limit exceeded.')
+        else:
+            new_balance = self.get_balance() - amount
+            self._BankAccount__balance = new_balance
+            print(f'Withdrew: {amount}')
+
+
+# 4. Main program
+def main():
+    savings = SavingsAccount('619', 'Jay', 70000, 5)
+    print('Savings Account')
+    savings.print_account_details()
+    savings.deposit(500)
+    savings.withdraw(200)
+    savings.apply_interest()
+    savings.print_account_details()
+
+    current = CurrentAccount('C456', 'Bob', 180, 300)
+    print('Current Account:')
+    current.print_account_details()
+    current.deposit(200)
+    current.withdraw(800)
+    current.withdraw(100) 
+    current.print_account_details()
+
+# Run the main program
+if __name__ == '__main__':
+    main()
