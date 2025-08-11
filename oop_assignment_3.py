@@ -50,6 +50,18 @@ class Shape(ABC):
         pass
 
 # 2. Rectangle subclass
+
+class Square(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+    
+    def area(self):
+        return self.length * self.width
+    
+    def perimeter(self):
+        return 2 *(self.length *self.width)
+
 class Rectangle(Shape):
     def __init__(self, length, width):
         self.length = length
@@ -97,6 +109,7 @@ def print_shape_info(shapes):
 
 # 4. Create a list of 5 shapes and test
 shapes = [
+    Square(8, 12),
     Rectangle(10, 5),
     Circle(7),
     Triangle(6, 4, 5, 5, 6),
