@@ -5,8 +5,6 @@
 
 #the first two columns
 
-#the bottom right 2x2 matrix
-
 import numpy as np
 
 arr1 = np.arange(1, 26).reshape(5, 5)
