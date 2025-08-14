@@ -34,4 +34,4 @@ covid_data_sum = covid.groupby('Country')[['Cases', 'Deaths']].sum()
 print(covid_data_sum)
 
 #Get countries with more than 2000 countries
-print(covid_data_sum[covid_data_sum['Cases'] > 2000])
+print(covid_data_sum[covid_data_sum['Cases'] > 2000])#filters for countries with more than 2000 cases
