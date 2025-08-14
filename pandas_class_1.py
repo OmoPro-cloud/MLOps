@@ -1,6 +1,8 @@
 import pandas as pd
 
 #PANDAS CLASS
+###PANDAS IS CASE SENSISITIVE
+
 
 df = pd.read_csv('data.csv') #Assuming data.csv is in the same directory
 print(df.head()) #Display the first few rows of the DataFrame
