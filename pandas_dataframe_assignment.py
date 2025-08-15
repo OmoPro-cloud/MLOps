@@ -16,6 +16,7 @@ print(df)
 
 print(df[df['Prices'] > 50.00]) #the most expensive product sold
 
+
 result = df.groupby('Product')['Quantity'].sum() 
 print(result) #total quantity sold for each product
 
@@ -32,3 +33,6 @@ max_revenue = daily_revenue.max()
 
 print(f'The day which recorded the highest sales revenue was {max_rev_date}, \n'
       f'with a total revenue of: ${max_revenue:,.2f}.')
+
+most_expensive = df.loc[df['Prices'].idxmax(), 'Product']
+print(f'The Product with the highest price was: ', most_expensive)
