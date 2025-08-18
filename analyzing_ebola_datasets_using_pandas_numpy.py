@@ -45,23 +45,23 @@ print(deaths_per_country)
 
 
 #use numpy to calculate percentage changes over time
-#country = 'Germany'
+country = 'Germany'
 
-#country_df = (
-#  e_df[e_df['Country'] == country]
-#  .sort_values('Date')
-#  .copy()
-#)
+country_df = (
+  e_df[e_df['Country'] == country]
+  .sort_values('Date')
+  .copy()
+)
 
-#country_df['Percent_Change_In_Cases'] = (
-#  country_df['Cases']
-#  .pct_change()
-#  .mul(100)
-#)
+country_df['Percent_Change_In_Cases'] = (
+  country_df['Cases']
+  .pct_change()
+  .mul(100)
+)
 
-#country_df['Percent_Change_In_Cases'] = country_df['Percent_Change_In_Cases'].round(2)
-#print('\nPercent Change in Cases in: ', country)
-#print(country_df[['Date', 'Cases', 'Percent_Change_In_Cases']])
+country_df['Percent_Change_In_Cases'] = country_df['Percent_Change_In_Cases'].round(2)
+print('\nPercent Change in Cases in: ', country)
+print(country_df[['Date', 'Cases', 'Percent_Change_In_Cases']])
 
 
 
