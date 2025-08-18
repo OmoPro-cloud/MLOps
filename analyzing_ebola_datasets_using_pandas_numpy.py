@@ -3,6 +3,7 @@ import numpy as np
 
 e_df = pd.read_csv('ebola.csv', parse_dates=['Date'])
 
+
 #list countries in order of top 10 cases
 latest_cases = e_df.groupby('Country')['Cases'].max().reset_index()
 top10_cases = latest_cases.sort_values('Cases', ascending=False).head(10)
@@ -10,7 +11,7 @@ print('\nList of Top 10 countries with cases:')
 print(top10_cases)
 
 
-#list of countries in order of top 5 deaths
+#list of countries in order of top 10 deaths
 latest_deaths = e_df.groupby('Country')['Deaths'].max().reset_index()
 top10_deaths = latest_deaths.sort_values('Deaths', ascending=False).head(10)
 print('\nList of Top 10 countries with deaths:')
