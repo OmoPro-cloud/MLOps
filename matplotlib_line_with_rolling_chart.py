@@ -1,0 +1,29 @@
+'''
+Task 1 – Line Chart with Rolling Mean
+
+Load the CSV into a Pandas DataFrame.
+
+Create a line chart of Year vs Value.
+
+Add a 5-year rolling mean line (dashed).
+
+Add a horizontal line at the mean value.
+
+Annotate the highest peak with an arrow.
+
+Save the figure as line_with_roll.png.
+
+'''
+
+import pandas as pd
+import matplotlib.pyplot as plt
+
+df = pd.read_csv('time_series_demo.csv')
+print(df)
+
+#first you have to plot the graph
+fig, ax = plt.subplots()
+ax.plot(df['Year'], df['Value'], marker='o', linewidth=0.5)
+ax.set(title='time series demo', xlabel = 'Year', ylabel = 'Value')
+ax.grid(True, alpha = 0.5)
+plt.show()
