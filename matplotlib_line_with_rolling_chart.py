@@ -22,9 +22,13 @@ df = pd.read_csv('time_series_demo.csv')
 print(df)
 
 df['5_Year_Rolling_Mean'] = df['Value'].rolling(window=5).mean()
-
 mean_value = df['Value'].mean()
 
+idx_max = df['Value'].idxmax()
+x_max = df.loc[idx_max, 'Year']
+y_max = df.loc[idx_max, 'Value']
+
+fig, ax = plt.subplots(figsize=(10, 6))
 
 
 fig, ax = plt.subplots()
