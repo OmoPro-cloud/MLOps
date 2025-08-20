@@ -42,10 +42,19 @@ ax.annotate(
 )
 
 ax.set_title('Time Series with 5 Year Rolling Mean and Peak')
+ax.set_xlabel('Year')
+ax.set_ylabel('Value')
+ax.grid(True, alpha=0.5)
+ax.legend()
 
+fig.savefig('line_with_roll.png', dpi=300)
+plt.show()
 
+'''
 fig, ax = plt.subplots()
 ax.plot(df['Year'], df['Value'], marker='o', linewidth=0.5)
 ax.set(title='time series demo', xlabel = 'Year', ylabel = 'Value')
 ax.grid(True, alpha = 0.5)
 plt.show()
+'''
+
