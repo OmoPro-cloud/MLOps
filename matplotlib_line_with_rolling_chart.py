@@ -21,7 +21,12 @@ import matplotlib.pyplot as plt
 df = pd.read_csv('time_series_demo.csv')
 print(df)
 
-#first you have to plot the graph
+df['5_Year_Rolling_Mean'] = df['Value'].rolling(window=5).mean()
+
+mean_value = df['Value'].mean()
+
+
+
 fig, ax = plt.subplots()
 ax.plot(df['Year'], df['Value'], marker='o', linewidth=0.5)
 ax.set(title='time series demo', xlabel = 'Year', ylabel = 'Value')
