@@ -33,6 +33,16 @@ ax.plot(df['Year'], df['Value'], marker='o', linewidth=1, label='Value')
 ax.plot(df['Year'], df['5_Year_Rolling_Mean'], linestyle='--', linewidth=2, label='5 Year Rolling Mean')
 ax.axhline(mean_value, color='k', linestyle=':', linewidth=1.5, label=f'Mean = {mean_value:.2f}')
 
+ax.annotate(
+  f'Max: {y_max:.2f} in {int(x_max)}',
+  xy = (x_max, y_max),
+  xytext = (x_max, y_max + 0.3),
+  arrowprops = dict(facecolor = 'black', arrowstyle='->'),
+  ha = 'center'
+)
+
+ax.set_title('Time Series with 5 Year Rolling Mean and Peak')
+
 
 fig, ax = plt.subplots()
 ax.plot(df['Year'], df['Value'], marker='o', linewidth=0.5)
