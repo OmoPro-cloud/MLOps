@@ -24,14 +24,14 @@ print(df)
 df['5_Year_Rolling_Mean'] = df['Value'].rolling(window=5).mean()
 mean_value = df['Value'].mean()
 
-idx_max = df['Value'].idxmax()
-x_max = df.loc[idx_max, 'Year']
-y_max = df.loc[idx_max, 'Value']
+peak = df['Value'].idxmax()
+x_max = df.loc[peak, 'Year']
+y_max = df.loc[peak, 'Value']
 
 fig, ax = plt.subplots(figsize=(10, 6))
 ax.plot(df['Year'], df['Value'], marker='o', linewidth=1, label='Value')
 ax.plot(df['Year'], df['5_Year_Rolling_Mean'], linestyle='--', linewidth=2, label='5 Year Rolling Mean')
-ax.axhline(mean_value, color='k', linestyle=':', linewidth=1.5, label=f'Mean = {mean_value:.2f}')
+ax.axhline(mean_value, color='k', linestyle=':', linewidth=1.5, label=f'Mean')
 
 ax.annotate(
   f'Max: {y_max:.2f} in {int(x_max)}',
