@@ -41,12 +41,13 @@ def main(api_key):
             print('Goodbye!')
             break
 
-        weather = get_weather(city, api_key)
-        if weather:
-            print(f"Weather in {weather['city']}: {weather['description']}")
-            print(f"Temperature: {weather['temp_c']:.2f}°C")
-        else:
-            print('Please try again.')
+        cities = [c.strip() for c in entry.split(',') if c.strip()]
+        if not cities:
+            print('Please enter at least one city')
+            continue
+
+        for city in cities:
+        
 
 if __name__ == '__main__':
     api_key = '6162d674c0d3ce291204035f9a8ce1e7'
