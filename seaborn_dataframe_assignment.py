@@ -16,7 +16,7 @@ plt.show()
 
 #Average Value per region(barplot)
 plt.figure(figsize=(8, 6))
-sns.barplot(data=df, x='Year', y='Value', estimator='mean', ci='None', palette='muted')
+sns.barplot(data=df, x='Year', y='Value', estimator='mean', errorbar=None, palette='pastel')
 plt.title('Average Value Per Region')
 plt.xlabel('Region')
 plt.ylabel('Average Value')
