@@ -25,13 +25,15 @@ def get_weather(city, api_key):
         return {
             'city': city,
             'description': data['weather'][0]['description'],
-            'temp_c': data['main']['temp'] - 273.15
+            'temp_c': data['main']['temp'] - 273.15,
+            'humidity': data['main']['humidity'],
+            'wind_speed': data['wind']['speed']
         }
     except requests.RequestException as e:
         print('Error fetching weather (network issue):', e)
         return None
     except Exception as e:
-        print('Unexpected error:', e)
+        print('Unexpected error for {city}:', e)
         return None
 
 def main(api_key):
@@ -41,13 +43,21 @@ def main(api_key):
             print('Goodbye!')
             break
 
-        cities = [c.strip() for c in entry.split(',') if c.strip()]
+        cities = [c.strip() for c in city.split(',') if c.strip()]
         if not cities:
             print('Please enter at least one city')
             continue
 
         for city in cities:
-        
+            weather = get_weather(city, api_key)
+            if weather:
+                print(f'\n Weather in {weather['city']}')
+                print(f'Description : {weather['description']}')
+                print(f'Temperature : {weather['temp_c']:.2f} °C')
+                print(f'Humidity : {weather['humidity']} %')
+                print(f'Wind Speed : {weather['wind_speed']}')
+            else:
+                print(f'Could not retrive data for {city}. Please try again.')
 
 if __name__ == '__main__':
     api_key = '6162d674c0d3ce291204035f9a8ce1e7'
