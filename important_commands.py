@@ -1,6 +1,7 @@
 #Docker commands
 #run -d --name web -p 8088:80 nginx:alpine
 #docker logs web -- this logs when someone has visited a server
+#docker stop (image/file_name)
 #docker rm web -- deletes a container('web' in this case)
 #docker run nginx
 
@@ -8,6 +9,7 @@
 #a container is a running image
 #a registry is a place where you can downlaid files and applications
 #dockerhub is an example of a registry
+
 '''
 
 Tasks
