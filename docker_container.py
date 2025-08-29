@@ -1,9 +1,9 @@
 '''
 #Run an ephemeral docker container, create the file and then exit
-docker run --rm alpine:3.19 sh -c 'echo Yemi Akomolafe /tmp/hello.txt'
+docker run --rm alpine:3.19 sh -c echo Yemi Akomolafe /tmp/hello.txt
 
 #Start a new container and check /tmp
-docker run --rm alpine:3.19 sh -c 'ls /tmp'
+docker run --rm alpine:3.19 sh -c ls /tmp
 
 #Run nginx container and host it on port 8080
 docker run -d --name nginx-test -p 8080:80 nginx:alpine
