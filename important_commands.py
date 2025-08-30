@@ -5,6 +5,10 @@
 #docker rm web -- deletes a container('web' in this case)
 #docker run nginx
 
+#docker volume create keras_cache
+#docker run --rm -it -v keras_cache:/home/appuser/.keras alpine sh
+
+
 #an image is a file
 #a container is a running image
 #a registry is a place where you can downlaid files and applications

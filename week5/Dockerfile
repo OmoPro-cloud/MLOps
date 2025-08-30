@@ -23,7 +23,7 @@ print("Keras weights cached")
 PY
 
 # Copy app
-COPY app.py ./
+COPY wsgi.py ./
 
 # Create a non-root user
 RUN useradd -m appuser && chown -R appuser:appuser /app
@@ -31,4 +31,4 @@ USER appuser
 
 # Expose some ports and set entrypoint (Gunicorn)
 EXPOSE 8080
-CMD ["gunicorn", "-w", "2", "-k", "gthread", "-b", "0.0.0.0:8080", "app:app"]
+CMD ["gunicorn", "-w", "2", "-k", "gthread", "-b", "0.0.0.0:8080", "wsgi:app"]
