@@ -18,7 +18,7 @@ services:
       test: ["CMD-SHELL", "curl -f http://localhost:8080/health || exit 1"]
       interval: 20s
       timeout: 5s
-      retries: 2
+      retries: 5
   
   volumes:
     keras_cache:
