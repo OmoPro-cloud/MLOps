@@ -20,8 +20,8 @@ services:
       timeout: 5s
       retries: 5
   
-  volumes:
-    keras_cache:
-  networks:
-    app_net:
-      driver: bridge
+volumes:
+  keras_cache:
+networks:
+  app_net:
+    driver: bridge
