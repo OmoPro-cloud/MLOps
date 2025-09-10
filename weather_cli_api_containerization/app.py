@@ -1,18 +1,7 @@
 import requests
 
 
-'''
-NEW: if an HTTP response is 200, then your request has succeeded.
-If it's response is a 404, then the source couldn't be found.
-A response of 500 indicates a server error
-'''
-
-
-
-#write a function that will take an input(city) from the user and return its current weather
-
 def get_weather(city, api_key):
-    """Fetch and return weather info dict for the city, or None on error."""
     try:
         url = f'https://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}'
         response = requests.get(url)
@@ -62,5 +51,3 @@ def main(api_key):
 if __name__ == '__main__':
     api_key = '6162d674c0d3ce291204035f9a8ce1e7'
     main(api_key)
-
-#practice
