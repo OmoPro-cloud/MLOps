@@ -9,3 +9,11 @@
 # you create a deployment with a yaml file
 # roll out: when you've made changes and want to push it
 # roll back: when you have made changes that you want to revert back to what they were previously before the change
+
+'''KUBERNETES COMMAND'''
+
+# kubectl apply -f (pod name): will run the pod
+# kubectl get pod (pod name) -o wide: can be used to confirm if a pod is running
+# kubectl describe (pod name): will provide details on the the pod
+# kubectl delete pod (pod name): this command will delete a pod
+# kubectl get pods: this will provide details on all currently running pods
