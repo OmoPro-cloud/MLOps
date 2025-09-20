@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  weather:
+    build: .
+    image: weather_app:latest
+    # ports:
+    #   - "8080:8080"
+    container_name: weather_app
+    stdin_open: true
+    tty: true

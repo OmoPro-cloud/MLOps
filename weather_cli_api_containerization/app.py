@@ -40,11 +40,11 @@ def main(api_key):
         for city in cities:
             weather = get_weather(city, api_key)
             if weather:
-                print(f'\n Weather in {weather['city']}')
-                print(f'Description : {weather['description']}')
-                print(f'Temperature : {weather['temp_c']:.2f} °C')
-                print(f'Humidity : {weather['humidity']} %')
-                print(f'Wind Speed : {weather['wind_speed']}')
+                print(f"\n Weather in {weather['city']}")
+                print(f"Description : {weather['description']}")
+                print(f"Temperature : {weather['temp_c']:.2f} °C")
+                print(f"Humidity : {weather['humidity']} %")
+                print(f"Wind Speed : {weather['wind_speed']}")
             else:
                 print(f'Could not retrive data for {city}. Please try again.')
 

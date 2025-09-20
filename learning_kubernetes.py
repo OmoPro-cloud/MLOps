@@ -17,3 +17,8 @@
 # kubectl describe (pod name): will provide details on the the pod
 # kubectl delete pod (pod name): this command will delete a pod
 # kubectl get pods: this will provide details on all currently running pods
+
+# HOW TO DELETE/SHUT DOWN AN ECHO(DEPLOYMENT): kubectl delete deployment echo
+# HOW TO TEMPORARILY STOP A DEPLOYMENT(SCALING): kubectl scale deployment echo --replicas=0
+
+#kubectl port-forward svc/echo 8080:80
