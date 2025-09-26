@@ -1,4 +1,5 @@
 from sklearn.linear_model import LinearRegression, LogisticRegression
+from sklearn.dummy import DummyClassifier
 import numpy as np
 from sklearn.metrics import classification_report, r2_score, roc_auc_score
 from sklearn.compose import ColumnTransformer
@@ -9,6 +10,8 @@ from sklearn.impute import SimpleImputer
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
+from sklearn.tree import DecisionTreeRegressor, plot_tree
+from matplotlib import pyplot as plt
 
 #load data
 data = fetch_california_housing(as_frame=True)
@@ -79,5 +82,31 @@ pipe_clf.fit(x_tr, y_tr)
 y_hat = pipe_clf.predict(x_te)
 
 #Metrics
-print(classification_report(y_te, y_hat))
-print("ROC AUC:", roc_auc_score(y_te, pipe_clf.predict_proba(x_te)[:, 1]))
+#print(classification_report(y_te, y_hat))
+#print("ROC AUC:", roc_auc_score(y_te, pipe_clf.predict_proba(x_te)[:, 1]))
+
+# Dummy Classifier baseline
+#dummy_clf = Pipeline([
+#    ('pre', preprocessor),  
+#    ('model', DummyClassifier(strategy="most_frequent"))
+#])
+#dummy_clf.fit(x_tr, y_tr)
+#y_dummy = dummy_clf.predict(x_te)
+#print("Dummy Classifier results:")
+#print(classification_report(y_te, y_dummy))
+
+#linear regression will predict the exact number(e.g. will predict the exact house price)
+#logistics regression is for classification. it will calculate the probability of an out(e.g. 75% chance that a house is overpriced)
+
+#Decision Tree
+tree = DecisionTreeRegressor(max_depth=5, random_state=42)
+pipe_tree = Pipeline([
+  ('pre', preprocessor),
+  ('model', tree)
+])
+pipe_tree.fit(x_train, y_train)
+
+#Vizualize the tree
+plt.figure(figsize=(20,8))
+plot_tree(pipe_tree.named_steps['model'], filled=True, feature_names=num_features, max_depth=3)
+plt.show()
