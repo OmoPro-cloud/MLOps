@@ -11,6 +11,6 @@ y_predict = kmeans.fit_predict(x)
 
 #Plot the clusters
 plt.scatter(x[:, 0], x[:, 1], c=y_predict, cmap='viridis')
-plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=200, c='red', marker='p')
+plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=200, c='red', marker='x')
 plt.title('K-Means Clustering Example')
 plt.show()
