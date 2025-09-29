@@ -1,4 +1,4 @@
-import matplotlib as plt
+import matplotlib.pyplot as plt
 from sklearn.datasets import make_blobs #this import allows us to generate blobs for clustering
 from sklearn.cluster import KMeans #allows us to create(map?) clusters
 
@@ -17,5 +17,5 @@ y_predict = kmeans.fit_predict(x)
 #Plot the cluster
 plt.scatter(x[:, 0], x[:, 1], c=y_predict, cmap='viridis')
 plt.scatter(kmeans.cluster_centers_[:, 0], kmeans.cluster_centers_[:, 1], s=200, c='red', marker='x')
-plt.title('K-Means Clusterinf Example')
+plt.title('K-Means Clustering Example')
 plt.show()
