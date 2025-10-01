@@ -3,13 +3,20 @@ import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 import numpy as np
 
-# Generate synthetic data
+#Generate synthetic data
 X, _ = make_blobs(n_samples=400, centers=3, random_state=42)
 
 #K-Means Implementation
 
-# Model 1
+#Model 1
 kmeans_optimal = KMeans(n_clusters=3, random_state=0)
 labels_optimal = kmeans_optimal.fit_predict(X)
 centroids_optimal = kmeans_optimal.cluster_centers_
 
+#Model 2
+kmeans_suboptimal = KMeans(n_clusters=5, random_state=0)
+labels_suboptimal = kmeans_suboptimal.fit_predict(X)
+centroids_suboptimal = kmeans_suboptimal.cluster_centers_
+
+#Task 3: Visualization
+fig, axes = plt.subplots(1, 2, figsize=(14, 6))
