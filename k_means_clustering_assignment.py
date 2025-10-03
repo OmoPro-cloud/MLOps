@@ -6,6 +6,10 @@ import numpy as np
 #Generate synthetic data
 X, _ = make_blobs(n_samples=400, centers=3, random_state=42)
 
+
+'''  _ labels the cluster as "true", we leave it as '_' because we want the clustering to be unsupervised!!!! '''
+
+
 # K-Means Implementation
 
 #Model 1
@@ -18,10 +22,12 @@ kmeans_suboptimal = KMeans(n_clusters=5, random_state=0) #this gives us an examp
 labels_suboptimal = kmeans_suboptimal.fit_predict(X)
 centroids_suboptimal = kmeans_suboptimal.cluster_centers_
 
+#Model 2s clustering was suboptimal because it overestimates the number of clusters, thereby splitting single clusters into multiple ones
+
 # Visualization
 fig, axes = plt.subplots(1, 2, figsize=(14, 6))
 
-#Plotting graphs
+#Plotting graphst
 #plot 1
 axes[0].scatter(X[:, 0], X[:, 1], c=labels_optimal, cmap='viridis', s=30)
 axes[0].scatter(centroids_optimal[:, 0], centroids_optimal[:, 1], 
