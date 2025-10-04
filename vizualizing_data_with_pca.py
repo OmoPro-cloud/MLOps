@@ -21,3 +21,30 @@ y = df['MedHouseVal']
 
 #train test split
 x_train, x_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Preprocessing pipeline
+num_features = X.columns.tolist()
+num_transformer = Pipeline([
+    ('imputer', SimpleImputer(strategy='median')),
+    ('scaler', StandardScaler())
+])
+preprocessor = ColumnTransformer([
+    ('num', num_transformer, num_features)
+])
+
+# here I fit the preprocessor on the *training* data, and transform both train & test
+X_train_scaled = preprocessor.fit_transform(x_train)
+X_test_scaled = preprocessor.transform(x_test)
+
+# (Optional) If you want to run the regression as well
+pipe = Pipeline([
+    ('pre', preprocessor),
+    ('model', LinearRegression())
+])
+pipe.fit(x_train, y_train)
+y_pred = pipe.predict(x_test)
+mse = mean_squared_error(y_test, y_pred)
+rmse = np.sqrt(mse)
+mae = mean_absolute_error(y_test, y_pred)
+r2 = r2_score(y_test, y_pred)
+print(f"RMSE: {rmse:.3f}, MAE: {mae:.3f}, R2: {r2:.3f}")
