@@ -1,12 +1,12 @@
 '''
 pca's main use is vizualisation
 data is reduced from multidimensional to 2d and 3d, this makes it easier to plot
-pca reduces noise by removing the 
+pca reduces noise by removing the *
 pca will find a new axis
 antagonal components
 pca is the process of automatically finding the best angle
 pca is essential for reducing data to 2 and 3 dimensional
-pca can be used to speed up model by reducing the feature count(makes linear regression faster)
+pca can be used to speed up a model by reducing the feature count(makes linear regression faster)
 pca is useful in vizualition
 in python we still use sci-kit learn on PCA'''
 

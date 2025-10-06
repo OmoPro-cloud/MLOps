@@ -1,33 +1,24 @@
-from sklearn.linear_model import LinearRegression
-import numpy as np
-import pandas as pd
-from sklearn.datasets import fetch_california_housing
-from sklearn.impute import SimpleImputer
-from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
-from sklearn.compose import ColumnTransformer
-from sklearn.preprocessing import StandardScaler
+'''PCA(principle Component Analysis)'''
+
 from sklearn.decomposition import PCA
-from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-import matplotlib.pyplot as plt
+from sklearn.datasets import load_digits
 
-#load data
-data = fetch_california_housing(as_frame=True)
-df = data.frame
+print("This mini-project shows how to manipulate multidimensional data and transform it into 2 dimensional data")
+print(f"We do this to make data easier to plot on a graph")
 
-#create feature and target
-X = df.drop(columns=['MedHouseVal'])
-y = df['MedHouseVal']
+digits = load_digits()
+X = digits.data
 
-#train test split
-x_train, x_split, y_train, y_split = train_test_split(X, y, train_size=0.2, random_state=42)
+print(f"Original Shape: {X.shape}")
 
-#Preprocessing Pipeline
-num_features = X.columns.tolist()
-num_transformer = Pipeline([
-  ('imputer', SimpleImputer(strategy='median')),
-  ('scaler', StandardScaler())
-])
-preprocessor = ColumnTransformer([
-  ('num', num_transformer, num_features)
-])
+pca = PCA(n_components=2)
+X_reduced = pca.fit_transform(X)
+
+print(f"Reduced Shape: {X_reduced.shape}")
+
+
+
+
+'''CUSTOMER SEGMENTATION PROJECT USING KMEANS'''
+
+

@@ -6,7 +6,7 @@ df = pd.read_csv('customers.csv')
 #print(df).head()
 
 #Select features for clustering
-X = df.read[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']]
+X = df[['Age', 'Annual Income (k$)', 'Spending Score (1-100)']]
 #
 '''
 We want to segment our customers
@@ -21,5 +21,8 @@ scaler = StandardScaler()
 X_scaled = scaler.fit_transform(X)
 
 #Fit KMeans Model
-kmeans = KMeans(n_cluster=4, random_state=42)
+kmeans = KMeans(n_clusters=4, random_state=42)
 df['Cluster'] = kmeans.fit_predict(X_scaled)
+
+print(df.groupby('Cluster').mean())
+#we use groupby to calculate the average age, average income and average spending score of the customers
