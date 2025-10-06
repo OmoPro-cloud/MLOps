@@ -18,3 +18,8 @@ We want to segment our customers
 
 #Scale the data
 scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+#Fit KMeans Model
+kmeans = KMeans(n_cluster=4, random_state=42)
+df['Cluster'] = kmeans.fit_predict(X_scaled)
