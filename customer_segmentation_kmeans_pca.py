@@ -112,13 +112,10 @@ cluster_counts = df["Cluster"].value_counts().sort_index()
 print("\nCluster sizes:")
 print(cluster_counts)
 
-# Write interpretation (you’ll put this in markdown in your notebook)
 for idx, row in cluster_summary.iterrows():
     print(f"Cluster {int(row['Cluster'])}: Age ≈ {row['Age']:.1f}, Income ≈ {row['Annual Income (k$)']:.1f}, "
           f"Spending Score ≈ {row['Spending Score (1-100)']:.1f}")
 
-# (You’d then write 5–6 lines summarizing what these clusters look like: e.g.
-# Cluster 0 — young, moderate income, high spenders; Cluster 1 — older, high income but low spenders, etc.)
 
 # Bonus: pairplot with clusters
 sns.pairplot(df, vars=features, hue="Cluster", palette="tab10", diag_kind="kde", height=2.5)
