@@ -11,15 +11,6 @@ from mpl_toolkits.mplot3d import Axes3D #this is what helps us with 3D plotting
 
 df = pd.read_csv("customers.csv")
 
-print("First 5 rows:")
-print(df.head())
-print("\nSummary statistics:")
-print(df.describe())
-print("\nInfo and missing values:")
-print(df.info())
-print("\nMissing counts per column:")
-print(df.isnull().sum())
-
 plt.figure(figsize=(5, 4))
 sns.scatterplot(data=df, x="Age", y="Annual Income (k$)")
 plt.title("Age vs Annual Income")
