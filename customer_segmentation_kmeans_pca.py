@@ -48,8 +48,7 @@ plt.title("Elbow Method to Determine Optimal k")
 plt.xticks(K_range)
 plt.show()
 
-optimal_k = 5
-kmeans = KMeans(n_clusters=optimal_k, random_state=42)
+kmeans = KMeans(n_clusters=5, random_state=42)
 labels = kmeans.fit_predict(X)
 df["Cluster"] = labels
 
@@ -69,7 +68,7 @@ legend1 = ax.legend(*scatter.legend_elements(), title="Cluster")
 ax.add_artist(legend1)
 plt.show()
 
-#PCA (Principle COmponent Analysis/Dimensionality Reduction)
+#PCA (Principle Component Analysis/Dimensionality Reduction)
 
 # Standardize features
 scaler = StandardScaler()
@@ -86,7 +85,7 @@ df["PCA2"] = X_pca[:, 1]
 # Plot clusters in PCA space
 plt.figure(figsize=(7, 5))
 sns.scatterplot(data=df, x="PCA1", y="PCA2", hue="Cluster", palette="tab10", s=60, alpha=0.8)
-plt.title("Cluster visualization in PCA‑reduced space")
+plt.title("Cluster placed in a PCA optimized space")
 plt.xlabel("PCA Component 1")
 plt.ylabel("PCA Component 2")
 plt.legend(title="Cluster")
