@@ -57,7 +57,6 @@ plt.title("Elbow Method to Determine Optimal k")
 plt.xticks(K_range)
 plt.show()
 
-# Suppose from the elbow plot we choose k = 5
 optimal_k = 5
 kmeans = KMeans(n_clusters=optimal_k, random_state=42)
 labels = kmeans.fit_predict(X)
@@ -74,7 +73,7 @@ ax.set_xlabel("Age")
 ax.set_ylabel("Annual Income (k$)")
 ax.set_zlabel("Spending Score (1-100)")
 plt.title("Clusters in 3D (Age, Income, Spending Score)")
-# Create legend via scatter elements
+
 legend1 = ax.legend(*scatter.legend_elements(), title="Cluster")
 ax.add_artist(legend1)
 plt.show()
@@ -121,7 +120,7 @@ for idx, row in cluster_summary.iterrows():
 # (You’d then write 5–6 lines summarizing what these clusters look like: e.g.
 # Cluster 0 — young, moderate income, high spenders; Cluster 1 — older, high income but low spenders, etc.)
 
-# Bonus (optional): pairplot with clusters
+# Bonus: pairplot with clusters
 sns.pairplot(df, vars=features, hue="Cluster", palette="tab10", diag_kind="kde", height=2.5)
-plt.suptitle("Pairplot of features colored by cluster", y=1.02)
+plt.suptitle(" Bonus Pairplot of features colored by cluster", y=1.02)
 plt.show()
