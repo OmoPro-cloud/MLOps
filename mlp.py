@@ -35,7 +35,7 @@ plt.show()
 model = keras.Sequential([
   layers.Flatten(input_shape=(28, 28)), #Flatten the 20x28 images into 784-element vectors
   layers.Dense(128, activation='relu'), #Hidden layer with 128 neurons and ReLu activation(Rectified Linear Unit)
-  layers.Dense(64, activation='relu'),
+  layers.Dense(64, activation='relu'), #tanh and sigmoid are other activations that can be used
   layers.Dense(10, activation='softmax') #Output layer with 10 (one per class) and softmax activated
 ])
 
