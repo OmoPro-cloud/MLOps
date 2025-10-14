@@ -50,4 +50,25 @@ secondHistory = secondModel.fit(x_train, y_train, epochs=5, batch_size=32, valid
 thirdModel.compile(optimizer='adam',
                    loss='sparse_categorical_crossentropy',
                    metrics=['accuracy'])
+thirdHistory = thirdModel.fit(x_train, y_train, epochs=5, batch_size=32, validation_split=0.2)
 
+plt.plot(firstHistory.history['accuracy'], label='Training Accuracy')
+plt.plot(firstHistory.history['val_accuracy'], label='Validation Accuracy')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
+
+plt.plot(secondHistory.history['accuracy'], label='Training Accuracy')
+plt.plot(secondHistory.history['val_accuracy'], label='Validation Accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
+
+plt.plot(thirdHistory.history['accuracy'], label='Training Accuracy')
+plt.plot(thirdHistory.history['val_accuracy'], label='Validation Accuracy')
+plt.xlabel('Epochs')
+plt.ylabel('Accuracy')
+plt.legend()
+plt.show()
