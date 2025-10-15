@@ -52,6 +52,15 @@ thirdModel.compile(optimizer='adam',
                    metrics=['accuracy'])
 thirdHistory = thirdModel.fit(x_train, y_train, epochs=5, batch_size=32, validation_split=0.2)
 
+test_loss, test_acc = firstModel.evaluate(x_test, y_test, verbose=2)
+print(f"\nFirst Model Test Accuracy: {test_acc:.3f}")
+
+test_loss, test_acc = secondModel.evaluate(x_test, y_test, verbose=2)
+print(f"\nSecond Model Test Accuracy: {test_acc:.3f}")
+
+test_loss, test_acc = thirdModel.evaluate(x_test, y_test, verbose=2)
+print(f"\nThird Model Test Accuracy: {test_acc:.3f}")
+
 plt.plot(firstHistory.history['accuracy'], label='Training Accuracy')
 plt.plot(firstHistory.history['val_accuracy'], label='Validation Accuracy')
 plt.xlabel('Epoch')
