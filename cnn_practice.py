@@ -21,3 +21,14 @@ def build_model(conv_layers, filters_list, dropout_rate=None):
   #first conv layer
   model.add(layers.Conv2D(filters_list[0], (3, 3), activation='relu', input_shape=(28, 28, 1)))
   model.add(layers.MaxPooling2D((2, 2)))
+  #additional conv layers
+  for filt in filters_list[1:]:
+    model.add(layers.Conv2D(filt, (3, 3), activation='relu'))
+    model.add(layers.MaxPooling2D((2, 2)))
+  model.add(layers.Flatten())
+  model.add(layers.Dense(64, activation='relu'))
+  if dropout_rate is None:
+    model.add(layers.Dropout(dropout_rate))
+  model.add(layers.Dense(10, activation='relu'))
+  return model
+
