@@ -15,3 +15,9 @@ x_test = x_test / 255.0
 x_train = x_train.reshape(1, 28, 28, -1)
 x_test = x_test.reshape(1, 28, 28, -1)
 
+#building 3 different architecture models
+def build_model(conv_layers, filters_list, dropout_rate=None):
+  model = keras.Sequential()
+  #first conv layer
+  model.add(layers.Conv2D(filters_list[0], (3, 3), activation='relu', input_shape=(28, 28, 1)))
+  model.add(layers.MaxPooling2D((2, 2)))
