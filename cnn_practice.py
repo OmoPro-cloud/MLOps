@@ -38,3 +38,8 @@ configs = {
   "Model_B": {"conv_layers": 2, "filters":[32,64], "dropout": None},
   "Model_C": {"conv_layers": 2, "filters":[32,64], "dropout": 0.3}
 }
+
+results = {}
+
+for name, cfg in configs.items():
+  print()
