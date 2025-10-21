@@ -32,3 +32,9 @@ def build_model(conv_layers, filters_list, dropout_rate=None):
   model.add(layers.Dense(10, activation='relu'))
   return model
 
+#settings for each of the 3 models
+configs = {
+  "Model_A": {"conv_layers": 1, "filters":[32], "dropout": None},
+  "Model_B": {"conv_layers": 2, "filters":[32,64], "dropout": None},
+  "Model_C": {"conv_layers": 2, "filters":[32,64], "dropout": 0.3}
+}
