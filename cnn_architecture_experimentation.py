@@ -42,11 +42,7 @@ for name, cfg in configs.items():
     model.compile(optimizer='adam',
                   loss='sparse_categorical_crossentropy',
                   metrics=['accuracy'])
-    history = model.fit(x_train, y_train,
-                        epochs=10,
-                        batch_size=64,
-                        validation_split=0.2,
-                        verbose=2)
+    history = model.fit(x_train, y_train, epochs=10, batch_size=64,validation_split=0.2, verbose=2)
     test_loss, test_acc = model.evaluate(x_test, y_test, verbose=2)
     print(f"{name} — Test Accuracy: {test_acc:.4f}")
     results[name] = test_acc
