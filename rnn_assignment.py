@@ -1,7 +1,3 @@
-#RNN - Recurrent Nueral Network
-#LSTM - Long Short Term Memory
-#Neural Machine Translation - uses deep learning to learn the mapping between languages. This method processes entire sentences or even paragraphs rather than word by word phrases
-
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -9,13 +5,11 @@ from sklearn.preprocessing import MinMaxScaler
 from tensorflow import keras
 from tensorflow.keras import layers
 
-url = "https://raw.githubusercontent.com/mwitiderrick/stockprice/master/NSE-TATAGLOBAL.csv"
-data = pd.read_csv(url)
-print(data.head())
+df = pd.read_csv('sp_500.csv')
+print(df.head())
 
-#visualize the stock price on a figure
 plt.figure(figsize=(10, 6))
-plt.plot(data['Close'], label='Closing Price')
+plt.plot(df['Close'], label='Closing Price')
 plt.title('Stock Price Over Time')
 plt.xlabel('Days')
 plt.ylabel('Price')
@@ -24,7 +18,7 @@ plt.show()
 
 #pre-process the data - in this section we use the lstm to predict the next closing price
 scaler = MinMaxScaler(feature_range=(0, 1))
-scaled_data = scaler.fit_transform(data['Close'].values.reshape(-1, 1))
+scaled_data = scaler.fit_transform(df['Close'].values.reshape(-1, 1))
 
 #How many days to look at
 lookback_days = 30
@@ -44,7 +38,7 @@ y_train, y_test = y[:train_size], y[train_size:]
 #build the LSTM model
 model = keras.Sequential([
   layers.GRU(100, return_sequences=True, input_shape=(x_train.shape[-1], 1)), 
-  layers.GRU(100, return_sequences=False), #GATED RECURRING UNIT - fewer
+  layers.GRU(100, return_sequences=False), #GATED RECURRING UNIT
   layers.Dense(25),
   layers.Dense(1)
 ])
