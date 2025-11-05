@@ -5,7 +5,9 @@ from sklearn.preprocessing import MinMaxScaler
 from tensorflow import keras
 from tensorflow.keras import layers
 
-df = pd.read_csv('sp_500.csv')
+
+url = "https://raw.githubusercontent.com/mwitiderrick/stockprice/master/NSE-TATAGLOBAL.csv"
+df = pd.read_csv(url)
 print(df.head())
 
 plt.figure(figsize=(10, 6))

@@ -1,3 +1,4 @@
+'''
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -32,3 +33,5 @@ for i in range(lookback_days, len(scaled_data)):
 
 x, y = np.array(x), np.array(y)
 x = np.reshape(x, (x.shape[0], x.shape[1], 1))
+'''
+#MORE PRACTICE
