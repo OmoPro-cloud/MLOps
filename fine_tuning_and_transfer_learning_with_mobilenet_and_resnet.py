@@ -1,6 +1,6 @@
 import tensorflow as tf #the main ML framework
 from tensorflow.keras import layers, models #this lets us build neural network architectures
-from tensorflow.keras.preprocessing import ImageDataGenerator #used for image augmentation/preprocessing
+from tensorflow.keras.preprocessing.image import ImageDataGenerator #used for image augmentation/preprocessing
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -68,4 +68,8 @@ fine_tune_history = model.fit(
 acc = model.evacuate(val_data)
 print(f"Validation Accuracy: {acc[1]*100:.2f}")
 
-plt.plot(history.history)
+plt.plot(history.history['accuracy'] + fine_tune_history.history['accuracy'])
+plt.title('Model Accuracy')
+plt.xlabel('Epoch')
+plt.ylabel('Accuracy')
+plt.show()
