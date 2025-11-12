@@ -36,3 +36,14 @@ def build_model(base_model):
   ])
   return model
 
+#Instantiate two different base models
+base_mobilenet = tf.keras.applications.MobileNetV2(input_shape=(128, 128, 3),
+                                                   include_top=False,
+                                                   weights='imagenet')
+
+base_resnet = tf.keras.applications.MobileNetV2(input_shape=(128, 128, 3),
+                                                include_top=False,
+                                                weights='imagenet')
+
+#build the two full models
+
