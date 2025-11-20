@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/d552eeb501864e39aba44d229090478a/artifacts
+end_time: 1763409480338
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d552eeb501864e39aba44d229090478a
+run_name: judicious-shrimp-589
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763409459083
+status: 3
+tags: []
+user_id: Yemi

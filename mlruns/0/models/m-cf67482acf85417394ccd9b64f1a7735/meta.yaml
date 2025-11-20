@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/models/m-cf67482acf85417394ccd9b64f1a7735/artifacts
+creation_timestamp: 1763409605662
+experiment_id: '0'
+last_updated_timestamp: 1763409621203
+model_id: m-cf67482acf85417394ccd9b64f1a7735
+model_type: null
+name: linear_regression_model
+source_run_id: 4304670890504f91a4888bf765305065
+status: 2
+status_message: null

@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/4304670890504f91a4888bf765305065/artifacts
+end_time: 1763409621228
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4304670890504f91a4888bf765305065
+run_name: brawny-asp-681
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763409605443
+status: 3
+tags: []
+user_id: Yemi
