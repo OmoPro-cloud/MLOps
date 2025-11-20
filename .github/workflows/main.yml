@@ -4,7 +4,8 @@ name: ML pipeline CI
 #1: The Trigger
 on:
   push:
-    branches:["main"]
+    branches:
+    - main
 
 jobs:
   train:
