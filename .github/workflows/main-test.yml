@@ -1,1 +1,38 @@
-name: ML pipeline CLI test
+name: Practicing ML pipeline CI
+
+#1: The Trigger
+
+#the workflow runs when there is a push to the main branch, and then the Continuous Integration job fires
+on:
+  push:
+    branches:
+      - main
+
+#defines one or more "jobs" that run as part of the workflow. here we only have a single job called "train"
+#ubuntu-latest specifies the runner environment: it will use a github hosted runner running an ubuntu image
+jobs:
+  train:
+    runs-on: ubuntu-latest
+#A list of steps within the train job. Each step either uses a predefined GitHub Action or runs shell commands.
+#Step 1: Uses the checkout action to clone your repo into the runner so that subsequent steps have access to the code.
+
+
+
+    steps:
+    - uses: actions/checkout@v3
+#Step 2: Sets up a Python 3.10 environment on the runner using GitHub's official setup-python action, so that you can run Python scripts.    
+    - name: Set Up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+#Step 3: Installs Python dependencies defined in your requirements.txt. This ensures that whatever libraries your training script needs are present.        
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+#Step 4: Runs your train.py script. Presumably, this script trains your machine learning model and writes out the trained artifacts (model weights, etc.) into a folder (likely models/).
+#Step 5: Uses GitHub’s upload-artifact action to upload the contents of the models/ directory as an artifact. This means after the workflow completes, you can download those trained model files from the workflow run’s artifacts. According to GitHub’s docs, upload-artifact packages the specified path (directory or files) into an archived artifact.  
+    - name: Upload trained model
+      uses: actions/upload-artifact@v3
+      with:
+        name: pre-trained model
+        path: models/
