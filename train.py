@@ -29,16 +29,14 @@ import mlflow.sklearn
 from sklearn.linear_model import LinearRegression
 from sklearn.metrics import mean_squared_error
 import numpy as np
+import shutil
 
 def train():
-    # Use a local tracking URI that is safe in CI (inside the repo)
     mlruns_path = os.path.join(os.getcwd(), "mlruns")
     mlflow.set_tracking_uri(f"file://{mlruns_path}")
+    mlflow.set_experiment("ci-experiment")
 
-    # Optionally, set an experiment name so runs go under a consistent experiment
-    #mlflow.set_experiment("ci-experiment")
-
-    with mlflow.start_run():
+    with mlflow.start_run() as run:
         # Fake data
         x = np.array([[1], [2], [3], [4], [5]])
         y = np.array([2, 4, 6, 8, 10])
@@ -54,26 +52,34 @@ def train():
 
         print(f"Training complete. MSE {mse}")
 
-        run = mlflow.active_run()
+        run_id = run.info.run_id
         artifact_uri = run.info.artifact_uri
+        print("Run ID:", run_id)
         print("Artifact URI:", artifact_uri)
 
-        # Copy the logged model from the mlruns folder to a top-level `models/` dir
-        # so GitHub Actions can upload it
+        # Construct the path to the model artifact directory
+        # According to MLflow layout: mlruns/{experiment_id}/{run_id}/artifacts/{artifact_path}
+        # Since you used artifact_path="model" in log_model, it's under `artifacts/model`
+        # But you must also know the experiment id to build the path. You can get it from run.info.experiment_id
+        experiment_id = run.info.experiment_id
+
         src_model_path = os.path.join(
             mlruns_path,
-            run.info.run_id,
+            experiment_id,
+            run_id,
             "artifacts",
             "model"
         )
-        dst_model_path = os.path.join(os.getcwd(), "models", run.info.run_id)
+
+        if not os.path.isdir(src_model_path):
+            raise FileNotFoundError(f"Model folder not found at expected path: {src_model_path}")
+
+        dst_model_path = os.path.join(os.getcwd(), "models", run_id)
         os.makedirs(dst_model_path, exist_ok=True)
 
-        # Copy the model folder
-        import shutil
-        shutil.copytree(src_model_path, os.path.join(dst_model_path, "model"), dirs_exist_ok=True)
+        shutil.copytree(src_model_path, os.path.join(dst_model_path, "model"))
 
-        print(f"Copied model to {dst_model_path}")
+        print(f"Copied model artifacts to {dst_model_path}")
 
 if __name__ == "__main__":
     train()
