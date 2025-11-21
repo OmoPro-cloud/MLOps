@@ -36,7 +36,7 @@ def train():
     mlflow.set_tracking_uri(f"file://{mlruns_path}")
 
     # Optionally, set an experiment name so runs go under a consistent experiment
-    mlflow.set_experiment("ci-experiment")
+    #mlflow.set_experiment("ci-experiment")
 
     with mlflow.start_run():
         # Fake data
