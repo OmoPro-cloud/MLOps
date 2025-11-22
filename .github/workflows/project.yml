@@ -21,7 +21,7 @@ jobs:
         pip install -r requirements.txt
     - name: Train model
       run: |
-        python train.py
+        python na.py
     - name: Upload Trained Model
       uses: actions/upload-artifact@v4
       with:
