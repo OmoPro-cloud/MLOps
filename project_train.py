@@ -64,6 +64,6 @@ if __name__ == "__main__":
     # Print metrics
     print(f"MSE on test set: {mse:.4f}")
     print(f"R2 on test set: {r2:.4f}")
-    print(f"MLflow run ID: {mlflow.active_run().info.run_id}")
+    print(f"MLflow run ID: {mlflow.active_run().info.run_id}") #
 
     mlflow.end_run()
