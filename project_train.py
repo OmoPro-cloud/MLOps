@@ -1,6 +1,9 @@
 import mlflow
 import mlflow.sklearn
 from mlflow.models import infer_signature
+import os
+import shutil
+import numpy as np
 
 from sklearn.datasets import fetch_california_housing
 from sklearn.linear_model import LinearRegression
@@ -22,7 +25,9 @@ if __name__ == "__main__":
     model = LinearRegression()
     print("Training Linear Regression on California housing data")
 
-    mlflow.start_run()
+    with mlflow.start_run() as run:
+       x = np.array([[1], [2], [3], [4], [5]])
+       y = np.array([2, 4, 6, 8, 10])
 
     # Log parameters
     mlflow.log_param("dataset", "california_housing")
@@ -60,6 +65,36 @@ if __name__ == "__main__":
         signature=signature,
         input_example=X_train[:5]
     )
+
+    def train():
+      mlruns_path = os.path.join(os.getcwd(), "mlruns")
+      mlflow.set_tracking_uri(f"file://{mlruns_path}")
+      mlflow.set_experiment("ci-experiment")
+
+    run_id = run.info.run_id
+    artifact_uri = run.info.artifact_uri
+    print("Run ID:", run_id)
+    print("Artifact URI:", artifact_uri)
+
+    experiment_id = run.info.experiment_id
+
+    src_model_path = os.path.join(
+            mlruns_path,
+            experiment_id,
+            run_id,
+            "artifacts",
+            "model"
+        )
+
+    if not os.path.isdir(src_model_path):
+      raise FileNotFoundError(f"Model folder not found at expected path: {src_model_path}")
+    
+    dst_model_path = os.path.join(os.getcwd(), "models", run_id)
+    os.makedirs(dst_model_path, exist_ok=True)
+    
+    shutil.copytree(src_model_path, os.path.join(dst_model_path, "model"))
+    
+    print(f"Copied model artifacts to {dst_model_path}")
 
     # Print metrics
     print(f"MSE on test set: {mse:.4f}")
