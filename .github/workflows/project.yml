@@ -3,7 +3,7 @@ name: using continuous integration to push a basic model
 on:
   push:
     branches:
-    - main
+    - main 
 
 jobs:
   train:
