@@ -1,0 +1,11 @@
+dvc init: starts DVC in your repo
+
+dvc add: tracks datasets or model files
+
+.dvc files: metadata that Git can version
+
+dvc remote add: connect S3/GDrive
+
+dvc push / dvc pull: upload & download data
+ 
+dvc repro: reproduce pipelines
