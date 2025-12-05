@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/5742c5a1c97a4b0ca381e898f1a0bfa9/artifacts
+end_time: 1764783727633
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5742c5a1c97a4b0ca381e898f1a0bfa9
+run_name: agreeable-sponge-233
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764783721670
+status: 3
+tags: []
+user_id: Yemi

@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/38546dbf9f014f6a81642fb734cd50f5/artifacts
+end_time: 1764790699605
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 38546dbf9f014f6a81642fb734cd50f5
+run_name: LinearRegression
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764790699566
+status: 4
+tags: []
+user_id: Yemi

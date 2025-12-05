@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/6f952c56f0b84077b7f19c2b941e4270/artifacts
+end_time: 1764793634422
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 6f952c56f0b84077b7f19c2b941e4270
+run_name: painted-grouse-502
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764793634251
+status: 4
+tags: []
+user_id: Yemi

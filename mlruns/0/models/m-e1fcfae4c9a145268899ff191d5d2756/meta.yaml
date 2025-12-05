@@ -1,0 +1,10 @@
+artifact_location: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/models/m-e1fcfae4c9a145268899ff191d5d2756/artifacts
+creation_timestamp: 1764783707185
+experiment_id: '0'
+last_updated_timestamp: 1764783713165
+model_id: m-e1fcfae4c9a145268899ff191d5d2756
+model_type: null
+name: model
+source_run_id: b8974df48fe245eb86a7d678ebd7c46e
+status: 2
+status_message: null

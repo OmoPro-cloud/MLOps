@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/b8974df48fe245eb86a7d678ebd7c46e/artifacts
+end_time: 1764783713214
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b8974df48fe245eb86a7d678ebd7c46e
+run_name: gifted-gull-447
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764783707109
+status: 3
+tags: []
+user_id: Yemi

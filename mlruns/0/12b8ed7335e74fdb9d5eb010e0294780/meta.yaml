@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/12b8ed7335e74fdb9d5eb010e0294780/artifacts
+end_time: 1764793776243
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 12b8ed7335e74fdb9d5eb010e0294780
+run_name: trusting-cod-718
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764793776063
+status: 4
+tags: []
+user_id: Yemi

@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/f7e9cbba2e1a43bb9d55b88caac1f2ba/artifacts
+end_time: 1764620090031
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: f7e9cbba2e1a43bb9d55b88caac1f2ba
+run_name: nebulous-tern-111
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764620080733
+status: 3
+tags: []
+user_id: Yemi

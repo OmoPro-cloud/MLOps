@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/69be6de6ac7348d992df18d7f940b7f1/artifacts
+end_time: 1764793827015
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 69be6de6ac7348d992df18d7f940b7f1
+run_name: skillful-mole-60
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764793826944
+status: 4
+tags: []
+user_id: Yemi

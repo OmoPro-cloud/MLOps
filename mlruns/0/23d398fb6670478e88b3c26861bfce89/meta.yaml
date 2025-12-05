@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/23d398fb6670478e88b3c26861bfce89/artifacts
+end_time: 1764788741638
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 23d398fb6670478e88b3c26861bfce89
+run_name: skittish-owl-566
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764788735051
+status: 3
+tags: []
+user_id: Yemi

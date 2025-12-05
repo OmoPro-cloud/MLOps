@@ -1,0 +1,14 @@
+artifact_uri: file:C:/Users/Yemi/Documents/GitHub/MLOps/mlflow/0/7bf6b1b653714657920c7b072402e15e/artifacts
+end_time: 1764619211708
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 7bf6b1b653714657920c7b072402e15e
+run_name: beautiful-flea-415
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764619196032
+status: 3
+tags: []
+user_id: Yemi

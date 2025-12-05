@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/b4cff8e5205a49fbbbc4084544449fce/artifacts
+end_time: 1764619653468
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b4cff8e5205a49fbbbc4084544449fce
+run_name: rebellious-boar-877
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764619642373
+status: 3
+tags: []
+user_id: Yemi

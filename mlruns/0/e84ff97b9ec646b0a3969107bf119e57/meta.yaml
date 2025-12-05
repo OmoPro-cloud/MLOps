@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/e84ff97b9ec646b0a3969107bf119e57/artifacts
+end_time: 1764783461928
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e84ff97b9ec646b0a3969107bf119e57
+run_name: trusting-sow-526
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764783452592
+status: 3
+tags: []
+user_id: Yemi

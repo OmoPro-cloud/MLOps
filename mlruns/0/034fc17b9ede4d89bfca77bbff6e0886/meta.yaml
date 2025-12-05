@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/034fc17b9ede4d89bfca77bbff6e0886/artifacts
+end_time: 1764619493305
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 034fc17b9ede4d89bfca77bbff6e0886
+run_name: enthused-rook-615
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764619481949
+status: 3
+tags: []
+user_id: Yemi

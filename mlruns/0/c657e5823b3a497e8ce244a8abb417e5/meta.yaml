@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/c657e5823b3a497e8ce244a8abb417e5/artifacts
+end_time: 1764821869164
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c657e5823b3a497e8ce244a8abb417e5
+run_name: DecisionTree
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764821860115
+status: 3
+tags: []
+user_id: Yemi

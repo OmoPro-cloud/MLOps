@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/e7a5f0b1faeb4456a861b635577b5dde/artifacts
+end_time: 1764619749190
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: e7a5f0b1faeb4456a861b635577b5dde
+run_name: beautiful-duck-472
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764619749087
+status: 3
+tags: []
+user_id: Yemi

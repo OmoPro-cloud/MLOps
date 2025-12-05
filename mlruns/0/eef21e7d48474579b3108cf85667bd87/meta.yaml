@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/eef21e7d48474579b3108cf85667bd87/artifacts
+end_time: 1764793941147
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: eef21e7d48474579b3108cf85667bd87
+run_name: smiling-bug-829
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764793934219
+status: 3
+tags: []
+user_id: Yemi

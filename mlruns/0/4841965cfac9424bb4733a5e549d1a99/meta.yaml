@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/Yemi/Documents/GitHub/MLOps/mlruns/0/4841965cfac9424bb4733a5e549d1a99/artifacts
+end_time: 1764788645203
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 4841965cfac9424bb4733a5e549d1a99
+run_name: tasteful-owl-838
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1764788637935
+status: 3
+tags: []
+user_id: Yemi

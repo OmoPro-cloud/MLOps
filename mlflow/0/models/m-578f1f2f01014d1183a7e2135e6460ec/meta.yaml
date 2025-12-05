@@ -1,0 +1,10 @@
+artifact_location: file:C:/Users/Yemi/Documents/GitHub/MLOps/mlflow/0/models/m-578f1f2f01014d1183a7e2135e6460ec/artifacts
+creation_timestamp: 1764619196207
+experiment_id: '0'
+last_updated_timestamp: 1764619211501
+model_id: m-578f1f2f01014d1183a7e2135e6460ec
+model_type: null
+name: model
+source_run_id: 7bf6b1b653714657920c7b072402e15e
+status: 2
+status_message: null
