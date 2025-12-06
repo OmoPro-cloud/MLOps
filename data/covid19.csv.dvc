@@ -1,0 +1,5 @@
+outs:
+- md5: f1a61cc881ad6f2b74df6b526f44ffdd
+  size: 3170
+  hash: md5
+  path: covid19.csv
