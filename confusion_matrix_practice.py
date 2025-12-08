@@ -30,3 +30,5 @@ plt.xlabel('False Positive Rate')
 plt.ylabel('False Negative Rate')
 plt.title(f"ROC Curve (AUC = {roc_auc:.3f})")
 plt.show()
+
+#dvc run -n train_model -d data/covid19.csv -o model.joblib python wine_train_mlflow.py
