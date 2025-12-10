@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "MLOps",
+			"path": "../.."
+		},
+		{
+			"name": "chest_xray",
+			"path": "../../../../../Downloads/ChestXRay2017/chest_xray"
+		}
+	],
+	"settings": {}
+}
