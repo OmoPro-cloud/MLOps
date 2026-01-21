@@ -98,3 +98,11 @@ plt.ylabel('Price')
 plt.legend()
 plt.show()
 '''
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import MInMaxScaler
+from tensorflow import keras
+from tensorflow.keras import layers
+

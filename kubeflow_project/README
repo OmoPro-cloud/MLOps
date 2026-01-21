@@ -1,0 +1,48 @@
+# Automated ML Training Pipeline with Kubeflow
+
+## Overview
+
+This project implements an end-to-end automated machine learning (ML) training pipeline using **Kubeflow Pipelines**.
+
+The pipeline performs the following steps:
+
+1. **Load Data**  
+   Downloads the Iris dataset from a public URL and saves it in the container’s filesystem.
+
+2. **Train Model**  
+   Trains a Logistic Regression model on the dataset and saves the trained model.
+
+3. **Evaluate Model**  
+   Loads the trained model, predicts on the dataset, and outputs an **accuracy metric**.
+
+The pipeline is defined in Python using the Kubeflow SDK and compiled to a YAML specification.
+
+---
+
+## Pipeline Components
+
+### 1. `load_data`
+
+- Downloads Iris dataset from GitHub
+- Writes CSV to `/tmp/iris.csv`
+- Returns a file path
+
+### 2. `train_model`
+
+- Reads CSV from `load_data`
+- Trains a Logistic Regression classifier
+- Saves model to `/tmp/iris_model.joblib`
+- Returns model path
+
+### 3. `evaluate_model`
+
+- Loads model and data
+- Computes accuracy of predictions
+- Outputs a metric that will appear in the Kubeflow UI
+
+---
+
+## How to Compile
+
+```bash
+python automl_pipeline.py
