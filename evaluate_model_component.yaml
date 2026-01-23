@@ -1,0 +1,96 @@
+# PIPELINE DEFINITION
+# Name: evaluate-model
+# Inputs:
+#    data_path: str
+#    model_path: str
+# Outputs:
+#    accuracy: system.Metrics
+components:
+  comp-evaluate-model:
+    executorLabel: exec-evaluate-model
+    inputDefinitions:
+      parameters:
+        data_path:
+          parameterType: STRING
+        model_path:
+          parameterType: STRING
+    outputDefinitions:
+      artifacts:
+        accuracy:
+          artifactType:
+            schemaTitle: system.Metrics
+            schemaVersion: 0.0.1
+deploymentSpec:
+  executors:
+    exec-evaluate-model:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - evaluate_model
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.15.2'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef evaluate_model(\n    model_path: str,\n    data_path: str,\n\
+          \    accuracy: Output[Metrics],\n) -> None:\n    import pandas as pd\n \
+          \   import joblib\n    from sklearn.metrics import accuracy_score\n\n  \
+          \  df = pd.read_csv(data_path)\n    X = df.drop(\"species\", axis=1)\n \
+          \   y = df[\"species\"]\n\n    model = joblib.load(model_path)\n    predictions\
+          \ = model.predict(X)\n\n    # Calculate & write metric\n    acc = accuracy_score(y,\
+          \ predictions)\n    accuracy.log(acc)\n\n"
+        image: python:3.12
+pipelineInfo:
+  name: evaluate-model
+root:
+  dag:
+    outputs:
+      artifacts:
+        accuracy:
+          artifactSelectors:
+          - outputArtifactKey: accuracy
+            producerSubtask: evaluate-model
+    tasks:
+      evaluate-model:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-evaluate-model
+        inputs:
+          parameters:
+            data_path:
+              componentInputParameter: data_path
+            model_path:
+              componentInputParameter: model_path
+        taskInfo:
+          name: evaluate-model
+  inputDefinitions:
+    parameters:
+      data_path:
+        parameterType: STRING
+      model_path:
+        parameterType: STRING
+  outputDefinitions:
+    artifacts:
+      accuracy:
+        artifactType:
+          schemaTitle: system.Metrics
+          schemaVersion: 0.0.1
+schemaVersion: 2.1.0
+sdkVersion: kfp-2.15.2

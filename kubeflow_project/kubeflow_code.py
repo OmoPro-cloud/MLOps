@@ -1,4 +1,4 @@
-from kfp.dsl import component, pipeline, Output, Metric
+from kfp.dsl import component, pipeline, Output, Metrics
 
 
 #load Data
@@ -42,7 +42,7 @@ def train_model(data_path: str) -> str:
 def evaluate_model(
     model_path: str,
     data_path: str,
-    accuracy: Output[Metric],
+    accuracy: Output[Metrics],
 ) -> None:
     import pandas as pd
     import joblib

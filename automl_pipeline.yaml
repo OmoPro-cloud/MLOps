@@ -1,0 +1,184 @@
+# PIPELINE DEFINITION
+# Name: automated-ml-training-pipeline
+# Description: Kubeflow pipeline that trains and evaluates an ML model on Iris data
+components:
+  comp-evaluate-model:
+    executorLabel: exec-evaluate-model
+    inputDefinitions:
+      parameters:
+        data_path:
+          parameterType: STRING
+        model_path:
+          parameterType: STRING
+    outputDefinitions:
+      artifacts:
+        accuracy:
+          artifactType:
+            schemaTitle: system.Metrics
+            schemaVersion: 0.0.1
+  comp-load-data:
+    executorLabel: exec-load-data
+    outputDefinitions:
+      parameters:
+        Output:
+          parameterType: STRING
+  comp-train-model:
+    executorLabel: exec-train-model
+    inputDefinitions:
+      parameters:
+        data_path:
+          parameterType: STRING
+    outputDefinitions:
+      parameters:
+        Output:
+          parameterType: STRING
+deploymentSpec:
+  executors:
+    exec-evaluate-model:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - evaluate_model
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.15.2'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef evaluate_model(\n    model_path: str,\n    data_path: str,\n\
+          \    accuracy: Output[Metrics],\n) -> None:\n    import pandas as pd\n \
+          \   import joblib\n    from sklearn.metrics import accuracy_score\n\n  \
+          \  df = pd.read_csv(data_path)\n    X = df.drop(\"species\", axis=1)\n \
+          \   y = df[\"species\"]\n\n    model = joblib.load(model_path)\n    predictions\
+          \ = model.predict(X)\n\n    # Calculate & write metric\n    acc = accuracy_score(y,\
+          \ predictions)\n    accuracy.log(acc)\n\n"
+        image: python:3.12
+    exec-load-data:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - load_data
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.15.2'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef load_data() -> str:\n    import pandas as pd\n\n    #load the\
+          \ Iris dataset\n    df = pd.read_csv(\n        \"https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv\"\
+          \n    )\n    path = \"/tmp/iris.csv\"\n    df.to_csv(path, index=False)\n\
+          \    return path\n\n"
+        image: python:3.12
+    exec-train-model:
+      container:
+        args:
+        - --executor_input
+        - '{{$}}'
+        - --function_to_execute
+        - train_model
+        command:
+        - sh
+        - -c
+        - "\nif ! [ -x \"$(command -v pip)\" ]; then\n    python3 -m ensurepip ||\
+          \ python3 -m ensurepip --user || apt-get install python3-pip\nfi\n\nPIP_DISABLE_PIP_VERSION_CHECK=1\
+          \ python3 -m pip install --quiet --no-warn-script-location 'kfp==2.15.2'\
+          \ '--no-deps' 'typing-extensions>=3.7.4,<5; python_version<\"3.9\"' && \"\
+          $0\" \"$@\"\n"
+        - sh
+        - -ec
+        - 'program_path=$(mktemp -d)
+
+
+          printf "%s" "$0" > "$program_path/ephemeral_component.py"
+
+          _KFP_RUNTIME=true python3 -m kfp.dsl.executor_main                         --component_module_path                         "$program_path/ephemeral_component.py"                         "$@"
+
+          '
+        - "\nimport kfp\nfrom kfp import dsl\nfrom kfp.dsl import *\nfrom typing import\
+          \ *\n\ndef train_model(data_path: str) -> str:\n    import pandas as pd\n\
+          \    from sklearn.linear_model import LogisticRegression\n    import joblib\n\
+          \n    df = pd.read_csv(data_path)\n    X = df.drop(\"species\", axis=1)\n\
+          \    y = df[\"species\"]\n\n    model = LogisticRegression(max_iter=200)\n\
+          \    model.fit(X, y)\n\n    model_path = \"/tmp/iris_model.joblib\"\n  \
+          \  joblib.dump(model, model_path)\n    return model_path\n\n"
+        image: python:3.12
+pipelineInfo:
+  description: Kubeflow pipeline that trains and evaluates an ML model on Iris data
+  name: automated-ml-training-pipeline
+root:
+  dag:
+    tasks:
+      evaluate-model:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-evaluate-model
+        dependentTasks:
+        - load-data
+        - train-model
+        inputs:
+          parameters:
+            data_path:
+              taskOutputParameter:
+                outputParameterKey: Output
+                producerTask: load-data
+            model_path:
+              taskOutputParameter:
+                outputParameterKey: Output
+                producerTask: train-model
+        taskInfo:
+          name: evaluate-model
+      load-data:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-load-data
+        taskInfo:
+          name: load-data
+      train-model:
+        cachingOptions:
+          enableCache: true
+        componentRef:
+          name: comp-train-model
+        dependentTasks:
+        - load-data
+        inputs:
+          parameters:
+            data_path:
+              taskOutputParameter:
+                outputParameterKey: Output
+                producerTask: load-data
+        taskInfo:
+          name: train-model
+schemaVersion: 2.1.0
+sdkVersion: kfp-2.15.2

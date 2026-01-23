@@ -1,0 +1,3 @@
+airflow db init: this command allows us to initialize the database
+
+directed acyclic graph
