@@ -10,7 +10,7 @@ recommend_router = APIRouter()
 
 #splitting traffic into 50-50 for A/B testing
 TRAFFIC_SPLIT = {
-    "A": 0.5,
+    "A": 0.9,
     "B": 0.1
 }
 
@@ -40,3 +40,12 @@ def recommend(user_id: int):
         "model": model,
         "latency": latency
     }
+'''
+from auth import verify_api_key
+from fastapi import Depends
+
+@recommend_router.get("/predict")
+def predict(data: str, api_key = Depends(verify_api_key)):
+    #Your prediction logic here
+    return{"prediction": "approved"}
+    '''
