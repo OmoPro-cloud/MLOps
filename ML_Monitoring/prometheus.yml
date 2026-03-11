@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'fastapi_app'
+    static_configs:
+      - targets: ['ml_api:8000'] # This should match the service name and port of your FastAPI app in docker-compose.yml
