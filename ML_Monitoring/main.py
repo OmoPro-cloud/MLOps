@@ -7,7 +7,7 @@ import time
 app = FastAPI()
 
 # Create custom metrics
-PREDICTION_COUNTER = Counter('model_predictions_total', 'Total number of predictions', ['model_version', 'class'])
+PREDICTION_COUNTER = Counter('model_predictions_total', 'Total number of predictions', ['model_version', 'prediction_class'])
 CONFIDENCE_HISTOGRAM = Histogram('model_confidence_score', 'Confidence score of predictions', buckets=[0.5, 0.7, 0.9, 1.0])
 
 # Automatic instrumentation (Latency, Error rates, etc.)
@@ -22,7 +22,7 @@ def predict(model_version: str = "v1"):
 
     
     # Increment the prediction counter with model version and class (for simplicity, using 'positive' class)
-    PREDICTION_COUNTER.labels(model_version=model_version, class_=prediction).inc()
+    PREDICTION_COUNTER.labels(model_version=model_version, prediction_class=prediction).inc()
     
     # Observe the confidence score in the histogram
     CONFIDENCE_HISTOGRAM.observe(confidence)
