@@ -1,25 +1,7 @@
-services:
-  ml_api:
-    build: .
-    ports:
-      - "8000:8000"
-    restart:
-      always
+global:
+  scrape_interval: 5s
 
-    prometheus:
-      image: prom/prometheusports:
-        - "9090:9090"
-      volumes:
-        - ./prometheus.yml:/etc/prometheus/prometheus.yml
-      restart: always
-
-    grafana:
-      image: grafana/grafana
-      ports:
-        - "3000:3000"
-      volumes:
-        - grafana_data:/var/lib/grafana
-      restart: always
-
-volumes:
-  grafana_data:
+scrape_configs:
+  - job_name: "fast_api"
+    static_configs:
+      - targets: ['ml_api:8000']
